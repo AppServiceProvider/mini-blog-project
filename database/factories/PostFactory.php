@@ -17,8 +17,10 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(),
-            'body' => $this->faker->unique()->address(),
+            // 'title' => $this->faker->name(),
+            // 'body' => $this->faker->unique()->address(),
+            'title' => fake()->name(),
+            'body' => fake()->safeEmail(),
         ];
     }
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory, SoftDeletes;
+    function user(){
+        return $this->belongsTo(User::class); //Inverse
+    }
 }

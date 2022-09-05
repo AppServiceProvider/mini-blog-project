@@ -6,6 +6,29 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 class Dashboard extends Controller
 {
+    public function firstPage(Request $req){
+
+        $search =$req['search'] ?? '';
+        if($search !=""){
+            // $post= Post::where('title','=',$search)->get();
+            $post= Post::where('title','LIKE',"%$search%")->orWhere('body','LIKE',"%$search%")->get();
+
+        }else{
+            $post= Post::all();
+            // $post= Post::paginate(15);
+
+    }
+    $post = compact('post', 'post');
+    
+        // $post= Post::all();
+        // $post= Post::paginate(15);
+        // return view('welcome',['post'=>$post]);
+        // return view('welcome');
+        // return view('welcome',['post'=>$post]);
+
+        return view('welcome')->with($post);
+
+    }
     
     public function allDataShowContr(){
         // $post=Post::all();

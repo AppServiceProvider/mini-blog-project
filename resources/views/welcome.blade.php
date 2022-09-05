@@ -37,10 +37,16 @@
             @endif
 
 
-
-
             <div class="container">
                 <div class="row">
+                    <div class="input-group mb-3">
+                    {{-- search  --}}
+                        <form action="" class="mb-2" >
+                            <input type="search" name="search" class="form-control" placeholder="Search Post" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <button class="btn btn-outline-secondary">Search</button>
+                        </form>{{-- search  --}}
+                    </div>
+
                     @foreach ($post as $value )
                     <div class="col-md-3">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -53,7 +59,7 @@
                         </div>
                     </div>
                 @endforeach
-                {{ $post->links() }}
+                {{-- {{ $post->links() }} --}}
                 </div>
             </div>
 

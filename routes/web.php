@@ -1,16 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
+// use App\Models\Post;
+
+Route::get('/', [App\Http\Controllers\Dashboard::class, 'firstPage']);
 
 
+// Route::get('/', function () {
+//     $post= Post::all();
+//     // $post= Post::paginate(15);
+//     return view('welcome',['post'=>$post]);
+//     // return view('welcome');
+// });
 
-Route::get('/', function () {
-    $post= Post::paginate(15);
-    return view('welcome',['post'=>$post]);
-    // return view('welcome');
-    
-});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -52,5 +55,9 @@ Route::get('/soft-delete/{id}', [App\Http\Controllers\Dashboard::class, 'softDel
 Route::get('/restor_dashboard/{id}', [App\Http\Controllers\Dashboard::class, 'restorData'])->middleware(['auth'])->name('restor-data');
 Route::get('/permanent_delete/{id}', [App\Http\Controllers\Dashboard::class, 'pDeleteData'])->middleware(['auth'])->name('permanent-delete');
 
+
+
+
+// Route::get('/customer/create', [App\Http\Controllers\Dashboard::class, 'customerCreate'])->middleware(['auth'])->name('customer.create');
 
 require __DIR__.'/auth.php';

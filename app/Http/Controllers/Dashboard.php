@@ -7,26 +7,26 @@ use App\Models\Post;
 class Dashboard extends Controller
 {
     public function firstPage(Request $req){
+    //     $search =$req['search'] ?? '';
+    //     if($search !=""){
+    //         // $post= Post::where('title','=',$search)->get();
+    //         $post= Post::where('title','LIKE',"%$search%")->orWhere('body','LIKE',"%$search%")->get();
 
-        $search =$req['search'] ?? '';
-        if($search !=""){
-            // $post= Post::where('title','=',$search)->get();
-            $post= Post::where('title','LIKE',"%$search%")->orWhere('body','LIKE',"%$search%")->get();
+    //     }else{
+    //         $post= Post::orderBy('created_at', 'DESC')->all();
+    //         // $post= Post::paginate(15);
 
-        }else{
-            $post= Post::all();
-            // $post= Post::paginate(15);
+    // }
+    // $post = compact('post', 'post');
 
-    }
-    $post = compact('post', 'post');
-    
+        $post= Post::orderBy('created_at', 'DESC')->paginate(20);
         // $post= Post::all();
         // $post= Post::paginate(15);
         // return view('welcome',['post'=>$post]);
         // return view('welcome');
-        // return view('welcome',['post'=>$post]);
+        return view('welcome',['post'=>$post]);
 
-        return view('welcome')->with($post);
+        // return view('welcome')->with($post);
 
     }
     

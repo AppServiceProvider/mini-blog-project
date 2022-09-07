@@ -4,8 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+
 class Dashboard extends Controller
 {
+// change password doesnot works start 
+    // public function changePassword(Request $req){
+    //     $this->validate($req,[
+    //         'oldpassword'=>'required',
+    //         'password'=>'required|confirmed',
+
+    //     ]);
+    //     $hashedPassword=Auth::user()->password;
+    //     if(Hash::check($req->oldpassword, $hashedPassword)){
+    //         $user=User::find(Auth::id());
+    //         $user->password=Hash::make($req->password);
+    //         $user->save();
+    //         Auth::logout();
+    //         return view ('change_password');
+    //     }else{
+    //         return view ('change_password');
+    //     }
+    // }
+// change password doesnot works end
+
+
     public function firstPage(Request $req){
     //     $search =$req['search'] ?? '';
     //     if($search !=""){

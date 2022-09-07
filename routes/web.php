@@ -3,7 +3,13 @@
 use Illuminate\Support\Facades\Route;
 // use App\Models\Post;
 
-Route::get('/', [App\Http\Controllers\Dashboard::class, 'firstPage']);
+
+// change password doesnot works  start 
+Route::get('/change/password', [App\Http\Controllers\Dashboard::class, 'changePassword'])->middleware(['auth'])->name('change-password');
+// Route::post('changePass',[App\Http\Controllers\Dashboard::class, 'changePassword'])->name('change.pass')->middleware('auth');
+// Route::put('/change/password', [App\Http\Controllers\Dashboard::class, 'changePassword'])->name('change-password');
+// change password doesnot works end
+
 
 
 // Route::get('/', function () {
@@ -20,6 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+Route::get('/', [App\Http\Controllers\Dashboard::class, 'firstPage']);
 
 // post Form Show 0.1
 Route::get('/post', [App\Http\Controllers\Dashboard::class, 'index'])->middleware(['auth'])->name('post_index');
@@ -54,7 +61,7 @@ Route::get('/soft-delete/{id}', [App\Http\Controllers\Dashboard::class, 'softDel
 //4
 Route::get('/restor_dashboard/{id}', [App\Http\Controllers\Dashboard::class, 'restorData'])->middleware(['auth'])->name('restor-data');
 Route::get('/permanent_delete/{id}', [App\Http\Controllers\Dashboard::class, 'pDeleteData'])->middleware(['auth'])->name('permanent-delete');
-
+Route::view('tempChange','change_password');
 
 
 

@@ -53,7 +53,8 @@
                             <div class="card-header">{{$value->user->name}}</div>
                             <div class="card-body">
                             <h5 class="card-title">{{$value->title}}</h5>
-                            <p class="card-text">{{$value->body}}</p>
+                            {{-- <p class="card-text">{{$value->body}}</p> --}}
+                            <p class="card-text">{{ Str::limit($value->body, 10) }}</p>
                             <span>{{(\Carbon\Carbon::parse($value->updated_at)->diffForHumans())}}</span>
                             </div>
                         </div>

@@ -22,6 +22,8 @@ Route::get('/change/password', [App\Http\Controllers\Dashboard::class, 'changePa
 
 
 Route::get('/dashboard', function () {
+    notify()->success('Laravel Notify is awesome!');
+
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
@@ -61,7 +63,6 @@ Route::get('/soft-delete/{id}', [App\Http\Controllers\Dashboard::class, 'softDel
 //4
 Route::get('/restor_dashboard/{id}', [App\Http\Controllers\Dashboard::class, 'restorData'])->middleware(['auth'])->name('restor-data');
 Route::get('/permanent_delete/{id}', [App\Http\Controllers\Dashboard::class, 'pDeleteData'])->middleware(['auth'])->name('permanent-delete');
-Route::view('tempChange','change_password');
 
 
 

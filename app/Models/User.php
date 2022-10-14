@@ -13,7 +13,9 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     
     public function postsHasManyUserModel(){
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class); 
+        // return $this->hasOne(Post::class);
+
     }
     /**
      * The attributes that are mass assignable.
